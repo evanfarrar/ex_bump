@@ -1,4 +1,8 @@
 defmodule Bump do
+  def write(filename: filename, canvas: %Canvas{ } = canvas) do
+    write(filename: filename, pixel_data: Canvas.pixel_data(canvas))
+  end
+
   def write(filename: filename, pixel_data: pixels) do
     {:ok, file} = File.open filename, [:write]
 
@@ -45,7 +49,6 @@ defmodule Bump do
       width :: unsigned-little-integer-size(32),
       _unused2 :: binary >> = filedata
     << _header :: size(offset)-binary, data :: binary >> = filedata
-    row_length = width*3 + rem(width*3, 4)
     Stream.chunk(:binary.bin_to_list(data), 8) |>
       Stream.map(fn(row) -> Enum.slice(row,0..width*3-1) |> Enum.chunk(3) end) |> Enum.to_list
   end
