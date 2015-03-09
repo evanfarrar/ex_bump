@@ -26,7 +26,7 @@ defmodule ExBump.Mixfile do
 
   defp package do
     [contributors: ["Evan Farrar"],
-     licenses: ["Apache 2.0"],
+     licenses: ["MIT"],
      links: %{"GitHub" => "https://github.com/evanfarrar/ex_bump"}]
   end
 end
