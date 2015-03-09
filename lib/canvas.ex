@@ -14,11 +14,6 @@ defmodule Canvas do
     %Canvas{ pixels: Enum.map(0..height-1, fn(_acc) -> Enum.map(0..width-1, fn(_acc2) -> %Color{ } end) end) }
   end
 
-# def size(canvas, height: height, width: width) do
-#   new_pixels = size(height: height, width: widtch)
-#   new_pixels merge canvas.pixels
-# end
-
   def size(canvas) do
     %Size{ height: length(canvas.pixels), width: length(Enum.fetch!(canvas.pixels, 0)) }
   end
@@ -61,5 +56,11 @@ defmodule Canvas do
 
   def pixel_data(canvas) do
     Enum.map(canvas.pixels, fn(row) -> Enum.map(row, fn(pixel) -> Color.to_list(pixel) end) end)
+  end
+end
+
+defimpl Inspect, for: Canvas do
+  def inspect(_, _) do
+    "%Canvas<pixels: PIXEL_DATA>"
   end
 end

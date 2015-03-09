@@ -7,7 +7,7 @@ Bump.write(filename: "file.bmp", pixel_data: pixel_data)
 pixel_data = Bump.read("file.bmp")
 
 canvas = Canvas.size(%Size{height: 400, width: 400}) |>
-	    Canvas.fill(canvas, color: Color.named(:red))
+	    Canvas.fill(color: Color.named(:red))
 
 Bump.write(filename: "red.bmp", canvas: canvas)
 canvas2 = Canvas.fill(canvas, color: Color.named(:blue),
